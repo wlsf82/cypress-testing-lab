@@ -1,0 +1,15 @@
+{
+  "name": "cypress-playground-course",
+  "version": "1.0.0",
+  "description": "Project of the Cypress Testing Lab course from the Talking About Testing online school.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Cypress Testing Lab",
+    "TAT School",
+    "Talking About Testing"
+  ],
+  "author": "Walmyr <wlsf82@gmail.com> (https://walmyr.dev/)",
+  "license": "MIT"
+}
