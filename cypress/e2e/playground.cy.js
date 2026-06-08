@@ -32,4 +32,16 @@ describe('Cypress Playground', () => {
     cy.contains('em#signature-triggered-by-check', 'Joe')
       .should('not.exist')
   })
+
+  it('turns it OFF, then ON again', () => {
+    cy.get('input[type="radio"]')
+      .check('off')
+
+    cy.contains('p#on-off', 'OFF').should('be.visible')
+
+    cy.get('input[type="radio"]')
+      .check('on')
+
+    cy.contains('p#on-off', 'ON').should('be.visible')
+  })
 })
