@@ -44,4 +44,28 @@ describe('Cypress Playground', () => {
 
     cy.contains('p#on-off', 'ON').should('be.visible')
   })
+
+  it('selects "Basic" by its content', () => {
+    cy.get('select#selection-type')
+      .select('Basic')
+
+    cy.contains('p', "You've selected: BASIC")
+      .should('be.visible')
+  })
+
+  it('selects "Standard" by its value', () => {
+    cy.get('select#selection-type')
+      .select('standard')
+
+    cy.contains('p', "You've selected: STANDARD")
+      .should('be.visible')
+  })
+
+  it('selects "VIP" by its index', () => {
+    cy.get('select#selection-type')
+      .select(3)
+
+    cy.contains('p', "You've selected: VIP")
+      .should('be.visible')
+  })
 })
