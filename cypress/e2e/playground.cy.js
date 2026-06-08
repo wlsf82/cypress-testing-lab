@@ -18,4 +18,18 @@ describe('Cypress Playground', () => {
     cy.contains('em#signature', 'John Doe')
       .should('be.visible')
   })
+
+  it('shows and hides the signature preview after signing it', () => {
+    cy.get('#signature-textarea-with-checkbox').type('Joe')
+
+    cy.get('#signature-checkbox').check()
+
+    cy.contains('em#signature-triggered-by-check', 'Joe')
+      .should('be.visible')
+
+    cy.get('#signature-checkbox').uncheck()
+
+    cy.contains('em#signature-triggered-by-check', 'Joe')
+      .should('not.exist')
+  })
 })
