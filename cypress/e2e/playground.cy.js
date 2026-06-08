@@ -11,4 +11,11 @@ describe('Cypress Playground', () => {
       "You've been successfully subscribed to our newsletter."
     ).should('be.visible')
   })
+
+  it('shows the signature preview after signing it', () => {
+    cy.get('#signature-textarea').type('John Doe')
+
+    cy.contains('em#signature', 'John Doe')
+      .should('be.visible')
+  })
 })
