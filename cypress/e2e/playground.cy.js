@@ -202,4 +202,8 @@ describe('Cypress Playground', () => {
       cy.get('input[type="text"]').should('not.exist')
     })
   })
+
+  it('ensures five animals are listed', () => {
+    cy.get('ul#animals li').should('have.length', 5)
+  })
 })
