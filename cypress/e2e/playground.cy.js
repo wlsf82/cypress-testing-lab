@@ -92,4 +92,17 @@ describe('Cypress Playground', () => {
       'The following file has been selected for upload: example.json'
     ).should('be.visible')
   })
+
+  it('Successfully retrieves TODO', () => {
+    cy.intercept('GET', 'https://jsonplaceholder.typicode.com/todos/1')
+      .as('getTodo')
+
+    cy.contains('button', 'Get TODO').click()
+    cy.wait('@getTodo')
+
+    cy.contains('ul li', 'TODO ID: 1').should('be.visible')
+    cy.contains('ul li', 'Title:').should('be.visible')
+    cy.contains('ul li', 'Completed:').should('be.visible')
+    cy.contains('ul li', 'User ID:').should('be.visible')
+  })
 })
