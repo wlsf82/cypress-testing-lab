@@ -231,6 +231,13 @@ describe('Cypress Playground', () => {
       "The provided code isn't correct. Please, try again."
     ).should('be.visible')
   })
+
+  it('successfully reads a downloaded file', () => {
+    cy.contains('a', 'Download a text file').click()
+
+    cy.readFile('./cypress/downloads/example.txt')
+      .should('include', 'Hello, World!')
+  })
 })
 
 describe('Cypress Playground - Frozen clock', () => {
