@@ -188,7 +188,8 @@ describe('Cypress Playground', () => {
 
   it('shows and hides the typed password', () => {
     cy.env(['password']).then(({ password }) => {
-      cy.get('input[type="password"]').type(password)
+      cy.get('input[type="password"]')
+        .type(password, { log: false })
 
       cy.get('#show-password-checkbox').check()
 
