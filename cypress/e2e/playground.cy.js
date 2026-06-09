@@ -155,4 +155,11 @@ describe('Cypress Playground', () => {
       'Oops, something went wrong. Check your internet connection, refresh the page, and try again.'
     ).should('be.visible')
   })
+
+  it('gets a TODO making a HTTP request directly', () => {
+    cy.request(
+      'GET',
+      'https://jsonplaceholder.typicode.com/todos/1'
+    ).its('status').should('be.equal', 200)
+  })
 })
