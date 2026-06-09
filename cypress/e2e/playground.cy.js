@@ -207,3 +207,17 @@ describe('Cypress Playground', () => {
     cy.get('ul#animals li').should('have.length', 5)
   })
 })
+
+describe('Cypress Playground - Frozen clock', () => {
+  beforeEach(() => {
+    const now = new Date(Date.UTC(2025, 3, 15))
+
+    cy.clock(now)
+    cy.visit('/index.html')
+  })
+
+  it('ensures the frozen date is displayed', () => {
+    cy.contains('p', 'Current date: 2025-04-15')
+      .should('be.visible')
+  })
+})
