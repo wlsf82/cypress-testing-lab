@@ -93,7 +93,7 @@ describe('Cypress Playground', () => {
     ).should('be.visible')
   })
 
-  it('Successfully retrieves TODO', () => {
+  it('successfully retrieves TODO', () => {
     cy.intercept('GET', 'https://jsonplaceholder.typicode.com/todos/1')
       .as('getTodo')
 
