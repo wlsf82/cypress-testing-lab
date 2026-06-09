@@ -185,4 +185,20 @@ describe('Cypress Playground', () => {
       "The date you've selected is: 2026-04-15"
     ).should('be.visible')
   })
+
+  it('shows and hides the typed password', () => {
+    cy.env(['password']).then(({ password }) => {
+      cy.get('input[type="password"]').type(password)
+
+      cy.get('#show-password-checkbox').check()
+
+      cy.get('input[type="password"]').should('not.exist')
+      cy.get('input[type="text"]').should('be.visible')
+
+      cy.get('#show-password-checkbox').uncheck()
+
+      cy.get('input[type="password"]').should('be.visible')
+      cy.get('input[type="text"]').should('not.exist')
+    })
+  })
 })
