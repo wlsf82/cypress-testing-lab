@@ -68,4 +68,18 @@ describe('Cypress Playground', () => {
     cy.contains('p', "You've selected: VIP")
       .should('be.visible')
   })
+
+  it('selects a few fruits', () => {
+    cy.get('select[multiple]')
+      .select([
+        'apple',
+        'banana',
+        'elderberry'
+      ])
+
+    cy.contains(
+      'p#fruits-paragraph',
+      "You've selected the following fruits: apple, banana, elderberry"
+    ).should('be.visible')
+  })
 })
