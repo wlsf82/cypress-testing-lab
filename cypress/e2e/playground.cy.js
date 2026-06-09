@@ -206,6 +206,31 @@ describe('Cypress Playground', () => {
   it('ensures five animals are listed', () => {
     cy.get('ul#animals li').should('have.length', 5)
   })
+
+  it('shows a success message when typing and submitting the correct dynamic code', () => {
+    cy.get('#timestamp').then(element => {
+      const code = element[0].innerText
+      cy.get('input[type="number"]').type(code)
+
+      cy.contains('button', 'Submit').click()
+
+      cy.contains(
+        '.success',
+        "Congrats! You've entered the correct code."
+      ).should('be.visible')
+    })
+  })
+
+  it('shows an error message when typing and submitting an incorrect code', () => {
+    cy.get('input[type="number"]').type('1234567890')
+
+    cy.contains('button', 'Submit').click()
+
+    cy.contains(
+      '.error',
+      "The provided code isn't correct. Please, try again."
+    ).should('be.visible')
+  })
 })
 
 describe('Cypress Playground - Frozen clock', () => {
