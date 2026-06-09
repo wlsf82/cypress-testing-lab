@@ -139,4 +139,20 @@ describe('Cypress Playground', () => {
       'Oops, something went wrong. Refresh the page and try again.'
     ).should('be.visible')
   })
+
+  it('shows an error when trying to GET a TODO without internet connection', () => {
+    cy.intercept(
+      'GET',
+      'https://jsonplaceholder.typicode.com/todos/1',
+      { forceNetworkError: true }
+    ).as('networkFailure')
+
+    cy.contains('button', 'Get TODO').click()
+    cy.wait('@networkFailure')
+
+    cy.contains(
+      '.error',
+      'Oops, something went wrong. Check your internet connection, refresh the page, and try again.'
+    ).should('be.visible')
+  })
 })
