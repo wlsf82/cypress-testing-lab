@@ -174,4 +174,15 @@ describe('Cypress Playground', () => {
         .should('be.visible')
     })
   })
+
+  it('successfully selects a date', () => {
+    cy.get('input[type="date"]')
+      .type('2026-04-15')
+      .blur()
+
+    cy.contains(
+      'p#date-paragraph',
+      "The date you've selected is: 2026-04-15"
+    ).should('be.visible')
+  })
 })
