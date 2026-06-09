@@ -105,4 +105,20 @@ describe('Cypress Playground', () => {
     cy.contains('ul li', 'Completed:').should('be.visible')
     cy.contains('ul li', 'User ID:').should('be.visible')
   })
+
+  it('successfully retrieves a mocked TODO', () => {
+    cy.intercept(
+      'GET',
+      'https://jsonplaceholder.typicode.com/todos/1',
+      { fixture: 'todo' }
+    ).as('getMockedTodo')
+
+    cy.contains('button', 'Get TODO').click()
+    cy.wait('@getMockedTodo')
+
+    cy.contains('ul li', 'TODO ID: 1').should('be.visible')
+    cy.contains('ul li', 'Title: my custom todo').should('be.visible')
+    cy.contains('ul li', 'Completed: true').should('be.visible')
+    cy.contains('ul li', 'User ID: 7').should('be.visible')
+  })
 })
