@@ -14,7 +14,7 @@
   "author": "Walmyr <wlsf82@gmail.com> (https://walmyr.dev/)",
   "license": "MIT",
   "devDependencies": {
-    "cypress": "^16.1.1"
+    "cypress": "^16.2.0"
   },
   "allowScripts": {
     "cypress": true
